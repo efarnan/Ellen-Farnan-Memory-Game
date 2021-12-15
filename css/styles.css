@@ -33,12 +33,6 @@ nav {
     right:2em;
 }
 
-button {
-    height: 2em;
-    width: 2em;
-    background-color: transparent;
-}
-
   /*Typography*/
 
   h1, h2, h3 {
@@ -51,16 +45,39 @@ button {
     width: 25%;
     float: left;
   }
-
+  /*need to change*/
   i {
-      height: 2em;
-      width: auto;
       color: white;
       position:absolute;
+
   }
 
  li {
   list-style-type: none;
+  display: block;
+  float: left;
+ }
+
+ hr {
+color: white;
+ }
+ /*Nav Buttons*/
+ .set-btn{
+   height: 3em;
+   width: 3em;
+   background-color: transparent;
+   box-shadow: none;
+   margin: 0.05em;
+   z-index: 99;
+ }
+
+ #btn-div{
+   margin: 2em;
+ }
+
+ i {
+  height: 2em;
+  width: 2em;
  }
 
  /*SCORE BOARD*/
@@ -81,6 +98,7 @@ button {
     grid-template-columns: repeat(4, 1fr);
     margin:0 auto;
     width: 29em;
+    padding-right: 12em;
   }
 
   .memory-card {
@@ -177,6 +195,29 @@ button {
   cursor: pointer;
 }
 
+/* Float cancel and delete buttons and add an equal width */
+.cancelbtn, .deletebtn {
+  float: left;
+  width: 50%;
+}
+
+/* Add a color to the cancel button */
+.cancelbtn {
+  background-color: #ccc;
+  color: black;
+}
+
+/* Add a color to the delete button */
+.deletebtn {
+  background-color: #f44336;
+}
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
 
 /*Overlays*/
 .overlay-text {
@@ -205,6 +246,13 @@ button {
 }
 .overlay-text:hover {
   cursor: pointer;
+}
+
+/*Stars*/
+
+li .fa-star{
+  display: inline block;
+  float: left;
 }
 
 @keyframes overlay-grow {
@@ -259,6 +307,7 @@ button {
         grid-template-columns: repeat(3, 1fr);
         margin:0 auto;
         width: 12em;
+        padding: 0;
         }
     .memory-card{
         height: 3.5em;

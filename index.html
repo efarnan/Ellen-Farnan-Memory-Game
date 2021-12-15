@@ -15,17 +15,24 @@
     <body>
         <header>
           <h1 id="title">MEMORY<br>GAME</h1>
+          <hr>
           <nav>
-            <button id="aud-btn">
-              <i class="fas fa-volume-mute"></i>
-              <i class="fas fa-volume-up"></i>
-            </button>
-            <button id="tut-btn">
-              <i class="far fa-question-circle"></i>
-            </button>
-            <button id="rstrt-btn">
-              <i class="fas fa-redo-alt"></i>
-            </button>
+            <div id="btn-div">
+              <button id="pause-btn" class="set-btn">
+                <i class="far fa-pause-circle"></i>
+                <i class="far fa-play-circle"></i>
+              </button>
+              <button id="aud-btn" class="set-btn">
+                <i class="fas fa-volume-mute"></i>
+                <i class="fas fa-volume-up"></i>
+              </button>
+              <button id="tut-btn" class="set-btn">
+                <i class="far fa-question-circle"></i>
+              </button>
+              <button id="rstrt-btn" class="set-btn" onclick="document.getElementById('restartModal').style.display='block'">
+                <i class="fas fa-redo-alt"></i>
+              </button>
+           </div>
           </nav>
         </header>
         <main>
@@ -112,25 +119,30 @@
            </div>
           </div>  
         </div>
-
-        <button onclick="document.getElementById('rsrt-modal').style.display='block'">Open Modal</button>
-        <div id="rsrt-modal" class="modal">
-          <span onclick="document.getElementById('rsrt-modal').style.display='none'" class="close" title="Close Modal">&times;</span>
-            <form class="modal-content" action="/action_page.php">
-              <div class="container">
-                <h1>Delete Account</h1>
-                <p>Are you sure you want to delete your account?</p>
+          <!-- Restart Modal -->
+        <div id="restartModal" class="modal">
+          <!-- Modal content -->
+          <div class="modal-content">
+           <div class="modal-header">
+                <span onclick="document.getElementById('restartModal').style.display='none'" class="close">&times;</span>
+                <h2>RESTART</h2>
+           </div>
+           <div class="modal-body">
+                <p>Are you sure you want to restart your game?</p>
 
                 <div class="clearfix">
-                  <button type="button" class="cancelbtn">Cancel</button>
-                  <button type="button" class="deletebtn">Delete</button>
+                  <button type="button" class="cancel-btn"  onclick="document.getElementById('restartModal').style.display='none'">Cancel</button>
+                  <button type="button" class="restart-btn" onclick= startGame()>Restart</button>
                  </div>
-               </div>
-             </form>
-         </div>
+            </div>
+          </div>
+        </div>
 
   <!--Overlays-->
         <div class="overlay-text visible">
+           <button id="tut-btn" class="set-btn">
+            <i class="far fa-question-circle"></i>
+           </button>
            <p class="overlay-text"><p>MEMORY GAME</p>
            <p class="overlay-text-small">Click to Start></p>
         </div>
@@ -142,21 +154,22 @@
   
         <div id="victory-text" class="overlay-text">
            <p>VICTORY</p>
+           <div class="overlay-text-small">
+            <p id="rating-text" >STARS</p>
+            <ul id="stars">
+              <li>
+                <i class="fa fa-star"></i>
+              </li>
+              <li>
+                <i class="fa fa-star"></i>
+              </li>
+              <li>
+                <i class="fa fa-star"></i>
+               </li>
+            </ul>
+          </div> 
+          <br>
            <span class="overlay-text-small"><p>Click to Restart></p></span>
-           <div class="star-rating">
-              <h3>STARS</h3>
-              <ul id="stars">
-                <li>
-                  <i class="fa fa-star"></i>
-                </li>
-                <li>
-                  <i class="fa fa-star"></i>
-                </li>
-                <li>
-                  <i class="fa fa-star"></i>
-                 </li>
-              </ul>
-            </div> 
         </div>
 
         </main>
