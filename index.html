@@ -6,30 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <meta name="author" content="Ellen Farnan">
     <title>Pair Game</title>   
+
     <link href="css/styles.css" rel="stylesheet" type="text/css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@600&display=swap" rel="stylesheet">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/376bab734d.js" crossorigin="anonymous"></script>  
+    
   </head>
     <body>
         <header>
           <h1 id="title">MEMORY<br>GAME</h1>
-          <hr>
           <nav>
             <div id="btn-div">
               <button id="pause-btn" class="set-btn">
-                <i class="far fa-pause-circle"></i>
-                <i class="far fa-play-circle"></i>
+                <i id="pause-icon" class="far fa-pause-circle"></i>
+                <i id="play-icon" class="far fa-play-circle"></i>
               </button>
               <button id="aud-btn" class="set-btn">
-                <i class="fas fa-volume-mute"></i>
-                <i class="fas fa-volume-up"></i>
+                <i id="audio-off" class="fas fa-volume-mute"></i>
+                <i id="audio-on" class="fas fa-volume-up"></i>
               </button>
-              <button id="tut-btn" class="set-btn">
-                <i class="far fa-question-circle"></i>
+              <button id="tut-btn" class="set-btn"> 
+                <i id="que-i" class="far fa-question-circle"></i>
               </button>
-              <button id="rstrt-btn" class="set-btn" onclick="document.getElementById('restartModal').style.display='block'">
+              <button id="rstrt-btn" class="set-btn">
                 <i class="fas fa-redo-alt"></i>
               </button>
            </div>
@@ -37,7 +40,7 @@
         </header>
         <main>
           <section class="scoreboard">
-            <div class="timer-container">
+            <div class="container">
               <!--timer-->
               <div class="timer">
                 <h3>TIME</h3>
@@ -48,9 +51,17 @@
                 <h3>MOVES</h3>
                 <h2 id="moves">0</h2>
               </div>
+              <div id="table">
+                <ul class="stars">
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                </ul>
+              </div>
             </div>
           </section>
           <section class="memory-game">
+
             <div class="memory-card" data-framework="blue">
               <img class="front-face" src="assets/img/blue.png" alt="blue-card">
               <img class="back-face" src="assets/img/blank.png"alt="Memory Card">
@@ -100,7 +111,25 @@
               <img class="back-face" src="assets/img/blank.png" alt="Memory Card">
             </div>
           </section>
-          
+          <!--Pause Modal-->
+          <div id="tutModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+             <div class="modal-header">
+                    <span class="close">&times;</span>
+                    <h2>HOW TO PLAY</h2>
+             </div>
+             <div class="modal-body">
+                     <p>HOW TO PLAY</p>
+                     <p>Step 1: Click on your first card. This card will flip to reveal its colour.</p>
+                     <p>Step 2: Click on your second card. This card will flip to reveal its colour. If these colours are the same, you have a match! If not the cards will unflip and you will have a chance to try again. </p>
+                     <p>Step 3: Keep selecting cards until all cards are matched, or you run out of time.</p>
+                     <p>Step 4: Select Restart, and try again! </p>
+                     <br><br><br>
+             </div>
+            </div>  
+          </div>
+
           <!-- Tutorial Modal -->
         <div id="tutModal" class="modal">
           <!-- Modal content -->
@@ -110,11 +139,11 @@
                   <h2>HOW TO PLAY</h2>
            </div>
            <div class="modal-body">
-                   <p> Select one card and try to find it's match, until all cards have been removed from the board</p>
-                   <p>Step 1</p>
-                   <p>Step 2</p>
-                   <p>Step 3</p>
-                   <p>Step 4</p>
+                   <p>HOW TO PLAY</p>
+                   <p>Step 1: Click on your first card. This card will flip to reveal its colour.</p>
+                   <p>Step 2: Click on your second card. This card will flip to reveal its colour. If these colours are the same, you have a match! If not the cards will unflip and you will have a chance to try again. </p>
+                   <p>Step 3: Keep selecting cards until all cards are matched, or you run out of time.</p>
+                   <p>Step 4: Select Restart, and try again! </p>
                    <br><br><br>
            </div>
           </div>  
@@ -124,15 +153,15 @@
           <!-- Modal content -->
           <div class="modal-content">
            <div class="modal-header">
-                <span onclick="document.getElementById('restartModal').style.display='none'" class="close">&times;</span>
+                <span onclick="document.getElementById('restartModal').style.display='none'"> </span>> </span> class="close">&times;</span>
                 <h2>RESTART</h2>
            </div>
            <div class="modal-body">
                 <p>Are you sure you want to restart your game?</p>
 
                 <div class="clearfix">
-                  <button type="button" class="cancel-btn"  onclick="document.getElementById('restartModal').style.display='none'">Cancel</button>
-                  <button type="button" class="restart-btn" onclick= startGame()>Restart</button>
+                  <button type="button" class="cancel-btn"  onclick= "document.getElementById('restartModal').style.display='none'">Cancel</button>
+                  <button type="button" class="restart-btn" id="int-rstrt">Restart</button>
                  </div>
             </div>
           </div>
@@ -146,6 +175,11 @@
            <p class="overlay-text"><p>MEMORY GAME</p>
            <p class="overlay-text-small">Click to Start></p>
         </div>
+
+        <div id="pause-text" class="overlay-text">
+          <p>PAUSE</p>
+          <span class="overlay-text-small"><p>Click to Continue></p></span>
+        </div>
       
         <div id="game-over-text" class="overlay-text">
            <p>GAME OVER</p>
@@ -154,24 +188,14 @@
   
         <div id="victory-text" class="overlay-text">
            <p>VICTORY</p>
-           <div class="overlay-text-small">
-            <p id="rating-text" >STARS</p>
-            <ul id="stars">
-              <li>
-                <i class="fa fa-star"></i>
-              </li>
-              <li>
-                <i class="fa fa-star"></i>
-              </li>
-              <li>
-                <i class="fa fa-star"></i>
-               </li>
-            </ul>
-          </div> 
-          <br>
+           <div class="overlay-text-detail">
+          <p>STARS<br><span id="starRating"></span></p>
+          </div>
+          <div>
            <span class="overlay-text-small"><p>Click to Restart></p></span>
+          </div>
         </div>
-
+      
         </main>
         <footer>
           <a href="#"><i class="fa-brands fa-github"></i></a>

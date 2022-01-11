@@ -47,38 +47,41 @@ nav {
   }
   /*need to change*/
   i {
-      color: white;
-      position:absolute;
-
+    color: white;
+    position:absolute;  
+    vertical-align: middle;
   }
 
- li {
-  list-style-type: none;
-  display: block;
-  float: left;
- }
-
- hr {
-color: white;
- }
  /*Nav Buttons*/
  .set-btn{
-   height: 3em;
-   width: 3em;
+   height: 1.5em;
+   width: 1.5em;
    background-color: transparent;
    box-shadow: none;
-   margin: 0.05em;
+   margin: 0.5em;
    z-index: 99;
+   cursor: pointer;
+   border: none;
  }
 
+ .set-btn i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+  margin: 0;
+ }
  #btn-div{
    margin: 2em;
  }
-
- i {
-  height: 2em;
-  width: 2em;
+ 
+ #play-icon{
+   display: none;
  }
+
+ #audio-on{
+  display: none;
+}
 
  /*SCORE BOARD*/
 .scoreboard{
@@ -88,6 +91,36 @@ color: white;
   padding-left: 2em;
   padding-right:0;
   flex-basis: 15%;
+}
+
+.table {
+	display: table;   /* Allow the centering to work */
+	margin: 0 auto;
+}
+
+.scoreboard .stars {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  margin: 0 5px 0 0;
+}
+
+.scoreboard .stars li {
+  padding-right: 15px;
+  padding-left: 0;
+  list-style: none;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.fa-star {
+  color: #ffd700;
+}
+
+#starRating li {
+  display: inline-block;
+  list-style: none;
+  padding: 0;
 }
 
   /*Game*/
@@ -239,6 +272,11 @@ color: white;
   font-size: .3em;
 }
 
+.overlay-text-detail {
+  font-size: .25em;
+  text-align: center;
+}
+
 .overlay-text.visible {
   display: flex;
   flex-direction: column;
@@ -250,10 +288,7 @@ color: white;
 
 /*Stars*/
 
-li .fa-star{
-  display: inline block;
-  float: left;
-}
+
 
 @keyframes overlay-grow {
   from {
@@ -286,6 +321,7 @@ li .fa-star{
     header{
         z-index: 30;
         position: relative;
+        height: 15%;
     }
 
     main{
@@ -299,7 +335,8 @@ li .fa-star{
         justify-content: center;
         align-self: center;
         text-align: center;
-        padding: 5%;
+        padding: 0 0 5%;
+        
     }
     .memory-game {
         display: grid;
