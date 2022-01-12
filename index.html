@@ -21,18 +21,19 @@
           <h1 id="title">MEMORY<br>GAME</h1>
           <nav>
             <div id="btn-div">
-              <button id="pause-btn" class="set-btn">
+              <button id="pause-btn" class="set-btn" onclick="pauseModal()">
                 <i id="pause-icon" class="far fa-pause-circle"></i>
                 <i id="play-icon" class="far fa-play-circle"></i>
               </button>
-              <button id="aud-btn" class="set-btn">
+             <!-- TO BE ADDED AT A LATER DATE
+               <button id="aud-btn" class="set-btn">
                 <i id="audio-off" class="fas fa-volume-mute"></i>
                 <i id="audio-on" class="fas fa-volume-up"></i>
-              </button>
-              <button id="tut-btn" class="set-btn"> 
+              </button> -->
+              <button id="tut-btn" class="set-btn tu-btn"> 
                 <i id="que-i" class="far fa-question-circle"></i>
               </button>
-              <button id="rstrt-btn" class="set-btn">
+              <button id="rstrt-btn" class="set-btn" onclick= "reStartGame()">
                 <i class="fas fa-redo-alt"></i>
               </button>
            </div>
@@ -111,39 +112,24 @@
               <img class="back-face" src="assets/img/blank.png" alt="Memory Card">
             </div>
           </section>
+
           <!--Pause Modal-->
-          <div id="tutModal" class="modal">
-            <!-- Modal content -->
-            <div class="modal-content">
-             <div class="modal-header">
-                    <span class="close">&times;</span>
-                    <h2>HOW TO PLAY</h2>
-             </div>
-             <div class="modal-body">
-                     <p>HOW TO PLAY</p>
-                     <p>Step 1: Click on your first card. This card will flip to reveal its colour.</p>
-                     <p>Step 2: Click on your second card. This card will flip to reveal its colour. If these colours are the same, you have a match! If not the cards will unflip and you will have a chance to try again. </p>
-                     <p>Step 3: Keep selecting cards until all cards are matched, or you run out of time.</p>
-                     <p>Step 4: Select Restart, and try again! </p>
-                     <br><br><br>
-             </div>
-            </div>  
-          </div>
+  >
 
           <!-- Tutorial Modal -->
         <div id="tutModal" class="modal">
           <!-- Modal content -->
           <div class="modal-content">
            <div class="modal-header">
-                  <span class="close">&times;</span>
-                  <h2>HOW TO PLAY</h2>
+            <h2 class="modal-title">HOW TO PLAY</h2>
+            <span class="close">&times;</span>
+                  
            </div>
-           <div class="modal-body">
-                   <p>HOW TO PLAY</p>
-                   <p>Step 1: Click on your first card. This card will flip to reveal its colour.</p>
-                   <p>Step 2: Click on your second card. This card will flip to reveal its colour. If these colours are the same, you have a match! If not the cards will unflip and you will have a chance to try again. </p>
-                   <p>Step 3: Keep selecting cards until all cards are matched, or you run out of time.</p>
-                   <p>Step 4: Select Restart, and try again! </p>
+           <div class="modal-body"><br>
+                   <p><span class = "bold">Step 1:</span> Click on your first card. This card will flip to reveal its colour.</p>
+                   <p><span class = "bold">Step 2:</span> Click on your second card. This card will flip to reveal its colour. If these colours are the same, you have a match! If not the cards will unflip and you will have a chance to try again. </p>
+                   <p><span class = "bold">Step 3:</span> Keep selecting cards until all cards are matched, or you run out of time.</p>
+                   <p><span class = "bold">Step 4:</span> Select Restart, and try again! </p>
                    <br><br><br>
            </div>
           </div>  
@@ -153,32 +139,36 @@
           <!-- Modal content -->
           <div class="modal-content">
            <div class="modal-header">
-                <span onclick="document.getElementById('restartModal').style.display='none'"> </span>> </span> class="close">&times;</span>
-                <h2>RESTART</h2>
+            <h2 class="modal-title">RESTART</h2>
+            <span onclick="document.getElementById('restartModal').style.display='none'" class="close">&times;</span>
            </div>
            <div class="modal-body">
                 <p>Are you sure you want to restart your game?</p>
 
                 <div class="clearfix">
-                  <button type="button" class="cancel-btn"  onclick= "document.getElementById('restartModal').style.display='none'">Cancel</button>
+                  <button type="button" class="cancel-btn">Cancel</button>
                   <button type="button" class="restart-btn" id="int-rstrt">Restart</button>
                  </div>
             </div>
           </div>
         </div>
 
-  <!--Overlays-->
-        <div class="overlay-text visible">
-           <button id="tut-btn" class="set-btn">
-            <i class="far fa-question-circle"></i>
-           </button>
-           <p class="overlay-text"><p>MEMORY GAME</p>
-           <p class="overlay-text-small">Click to Start></p>
+        <div id="pse-Modal" class="modal">
+          <!-- Modal content -->
+          <div class="modal-content">
+           <div class="modal-body">
+            <h2 id="paused-text">GAME PAUSED</h2>
+           </div>
+          </div>
         </div>
 
-        <div id="pause-text" class="overlay-text">
-          <p>PAUSE</p>
-          <span class="overlay-text-small"><p>Click to Continue></p></span>
+  <!--Overlays-->
+        <div class="overlay-text visible">
+          <button>
+            
+          </button>
+           <p class="overlay-text"><p>MEMORY GAME</p>
+           <p class="overlay-text-small">Click to Start></p>
         </div>
       
         <div id="game-over-text" class="overlay-text">
