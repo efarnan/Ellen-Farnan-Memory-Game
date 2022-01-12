@@ -65,26 +65,26 @@
 
             <div class="memory-card" data-framework="blue">
               <img class="front-face" src="assets/img/blue.png" alt="blue-card">
-              <img class="back-face" src="assets/img/blank.png"alt="Memory Card">
+              <img class="back-face" src="assets/img/blank.png" alt="Memory Card">
             </div>
             <div class="memory-card" data-framework="blue">
               <img class="front-face" src="assets/img/blue.png" alt="blue-card">
-              <img class="back-face" src="assets/img/blank.png"alt="Memory Card">
-            </div>
-            <div class="memory-card" data-framework="green">
-              <img class="front-face" src="assets/img/green.png"alt="green-card">
               <img class="back-face" src="assets/img/blank.png" alt="Memory Card">
             </div>
             <div class="memory-card" data-framework="green">
-              <img class="front-face" src="assets/img/green.png"alt="green-card">
+              <img class="front-face" src="assets/img/green.png" alt="green-card">
+              <img class="back-face" src="assets/img/blank.png" alt="Memory Card">
+            </div>
+            <div class="memory-card" data-framework="green">
+              <img class="front-face" src="assets/img/green.png" alt="green-card">
               <img class="back-face" src="assets/img/blank.png" alt="Memory Card">
             </div>
             <div class="memory-card" data-framework="orange">
-              <img class="front-face" src="assets/img/orange.png"alt="orange-card">
+              <img class="front-face" src="assets/img/orange.png" alt="orange-card">
               <img class="back-face" src="assets/img/blank.png" alt="Memory Card">
             </div>
             <div class="memory-card" data-framework="orange">
-              <img class="front-face" src="assets/img/orange.png"alt="orange-card">
+              <img class="front-face" src="assets/img/orange.png" alt="orange-card">
               <img class="back-face" src="assets/img/blank.png" alt="Memory Card">
             </div>
             <div class="memory-card" data-framework="pink">
@@ -112,9 +112,6 @@
               <img class="back-face" src="assets/img/blank.png" alt="Memory Card">
             </div>
           </section>
-
-          <!--Pause Modal-->
-  >
 
           <!-- Tutorial Modal -->
         <div id="tutModal" class="modal">
@@ -153,27 +150,38 @@
           </div>
         </div>
 
+         <!-- Pause Modal -->
         <div id="pse-Modal" class="modal">
           <!-- Modal content -->
           <div class="modal-content">
            <div class="modal-body">
             <h2 id="paused-text">GAME PAUSED</h2>
+            <br>
+            <div><p>click to continue></p></div>
+            <br>
            </div>
           </div>
         </div>
 
   <!--Overlays-->
         <div class="overlay-text visible">
-          <button>
-            
-          </button>
            <p class="overlay-text"><p>MEMORY GAME</p>
            <p class="overlay-text-small">Click to Start></p>
+
+           <div class="overlay-text-detail" id="intro-tut">
+            <p>HOW TO PLAY:</p>
+            <p><span class = "bold">Step 1:</span> Click on your first card. This card will flip to reveal its colour.</p>
+            <p><span class = "bold">Step 2:</span> Click on your second card. This card will flip to reveal its colour. <br>If these colours are the same, you have a match! If not the cards will unflip and you will have a chance to try again. </p>
+            <p><span class = "bold">Step 3:</span> Keep selecting cards until all cards are matched, or you run out of time.</p>
+            <p><span class = "bold">Step 4:</span> Select Restart, and try again! </p>
+            </div>
+
         </div>
       
         <div id="game-over-text" class="overlay-text">
            <p>GAME OVER</p>
-           <span class="overlay-text-small"><p>Click to Restart></p></span>
+           <div class='overlay-text-detail'><p>Better luck next time.</p></div>
+           <span class="overlay-text-small">Click to Restart></span>
         </div>
   
         <div id="victory-text" class="overlay-text">
@@ -182,15 +190,35 @@
           <p>STARS<br><span id="starRating"></span></p>
           </div>
           <div>
-           <span class="overlay-text-small"><p>Click to Restart></p></span>
+           <span class="overlay-text-small">Click to Restart></span>
           </div>
+
+          <!--CSS BG Animation-->
         </div>
-      
+        <div class="area" >
+          <ul class="circles">
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+          </ul>
+        </div >
         </main>
         <footer>
-          <a href="#"><i class="fa-brands fa-github"></i></a>
-          <a href="#"><i class="fa-brands fa-dribbble"></i></a>
-          <a href="#"><i class="fa-brands fa-twitter"></i></a>
+          <div id="sm-icons">
+           <a href="https://github.com/efarnan"><i class="fab fa-github"></i></a>
+           <a href="https://dribbble.com/efarnan"><i class="fab fa-dribbble"></i></a>
+           <a href="https://twitter.com/FarnanEllen"><i class="fab fa-twitter"></i></a>
+          </div>
+          <div id="foot-text">
+           <p> Copyright &copy; 2022, Ellen Farnan</p>
+          </div>
         </footer>
         <script src="js/scripts.js"></script>
       </body>

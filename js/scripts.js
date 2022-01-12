@@ -14,12 +14,12 @@ let combosFound = 0;
 let movesCounter = 0;
 let isPaused = false;
 let cardsTotal = 12;
-let cardsDisabled = []
+let cardsDisabled = [];
 let count = 60;
 let interval;
 
-
 //AUDIO
+//TO BE ADDED AS A LATER FEATURE
 
 //START GAME
 const startGame = () => {
@@ -40,27 +40,30 @@ const startGame = () => {
   console.log(cardsDisabled); 
   isPaused = false;
   
+  
   cards.forEach(card => card.style.visibility = 'visible');
 
   for (var i = 0; i < cards.length; i++) {
     deck.innerHTML = "";
     cards[i].classList.remove("flip");
   }
-
- cards.forEach(card => card.onclick = flipCard);
   
   for (let i= 0; i < stars.length; i++){
     stars[i].style.color = "#FFD700";
     stars[i].style.visibility = "visible";
   }
-
-  shuffle(cards);
   
+
+  cards.forEach(card => card.onclick = flipCard);
+
+  setTimeout(() => {
+    shuffle(cards);
+  }, 1000)
+
   resetBoard();
   
-  console.log('startGame running')
-}
-
+  console.log('startGame running');
+};
 
 function flipCard() {
   if (lockBoard) return;
@@ -95,7 +98,7 @@ if (movesCounter > 8 && movesCounter < 12) {
   document.getElementById('moves').innerHTML= movesCounter;
 
   checkForMatch();
-  console.log('flipCards running')
+  console.log('flipCards running');
 }
 //leave flipCard as current function format. OR Pass in a variable to the button to use new synax per Sunny
 
@@ -107,7 +110,6 @@ const checkForMatch = () => {
         
         if (combosFound === 6){
           victory();
-          console.log('test combos')
         } 
 
          return;
@@ -115,7 +117,7 @@ const checkForMatch = () => {
 
     unflipCards();
     console.log('checkforMatch running')
-}
+};
 
 const disableCards = () => {
   firstCard.removeAttribute('onclick', flipCard);
@@ -127,10 +129,9 @@ const disableCards = () => {
 
     resetBoard();
     cardsDisabled++;
-    console.count('The value of cardsDisabled is "')
     }, 1000);
     console.log('disableCards running')
-}
+};
 
 const unflipCards = () => {
     lockBoard = true;
@@ -142,21 +143,21 @@ const unflipCards = () => {
     resetBoard();
   }, 1000);
 
-  console.log('unflipCards running')
-}
+  console.log('unflipCards running');
+};
 
 const resetBoard = () => {
   [hasFlippedCard, lockBoard] = [false, false];
   [firstCard, secondCard] = [null, null];
-  console.log('resetBoard running')
-}
+  console.log('resetBoard running');
+};
 
 const shuffle = () => {
    cards.forEach(card => {
      let ramdomPos = Math.floor(Math.random() * 12);
      card.style.order = ramdomPos;
    });
-   console.log('shuffle running')
+   console.log('shuffle running');
  };
 
 cards.forEach(card => card.onclick = flipCard);
@@ -167,21 +168,18 @@ const startTimer = () => {
     if (!isPaused) {
     document.getElementById('time-remaining').innerHTML= count;
     count--;
-    console.log('test timer 1')
-    }
+    };
 
     if (count === 0){
       clearInterval(interval);
       document.getElementById('time-remaining').innerHTML='Done';
       gameOver();
-      console.log('test timer 2')
      }
    }, 1000);
-   console.log('startTimer running')
-}
+   console.log('startTimer running');
+};
 
 const pauseGame = () => {  
-
   if(!isPaused){
 		isPaused = true;
     //setting the value to ispause 
@@ -189,8 +187,8 @@ const pauseGame = () => {
   else {
     isPaused = false;
   }
-  console.log('pauseGame running')
-}
+  console.log('pauseGame running');
+};
 
 const pauseModal = () => {
   pauseGame();
@@ -203,29 +201,31 @@ const pauseModal = () => {
       isPaused = false; 
    }
   }
-}
+};
+
 
 //TUTORAL MODAL 
-const modal = document.getElementById("tutModal");
-const tutbtn = document.getElementById("tut-btn");
-const span = document.getElementsByClassName("close")[0];
+ const modal = document.getElementById("tutModal");
+ const tutbtn = document.getElementById("tut-btn");
+ const span = document.getElementsByClassName("close")[0];
 
-tutbtn.onclick = modalOpen = () => {
-  modal.style.display = "block";
-  pauseGame();
-}
+ tutbtn.onclick = modalOpen = () => {
+   modal.style.display = "block";
+   pauseGame();
+ };
 
-span.onclick = modalClose = () => {
-  modal.style.display = "none";
-  isPaused = false;
-}
+ span.onclick = modalClose = () => {
+   modal.style.display = "none";
+   isPaused = false;
+ };
 
-window.onclick = modalExit = (event) => {
-  if (event.target == modal) {
-    modal.style.display = "none";
-    isPaused = false;
- }
-}
+ window.onclick = modalExit = (event) => {
+   if (event.target == modal) {
+     modal.style.display = "none";
+     isPaused = false;
+  }
+ };
+
 
 const reStartGame = () => {
 //Restart Confirmation Modal
@@ -239,34 +239,33 @@ const reStartGame = () => {
   cancelBtn.onclick = modalClose = () => {
     modal2.style.display = "none";
     isPaused = false;
-  }
+  };
 
   span.onclick = modalClose = () => {
     modal2.style.display = "none";
     isPaused = false;
-  }
+  };
 
   window.onclick = modalExit = (event) => {
     if (event.target == modal2) {
       modal2.style.display = "none";
       isPaused = false;
    }
-  }
+  };
 
   restartBtn.onclick =  () => {
     modal2.style.display = "none";
     startGame();
-
   }
   console.log('reStartGame running')
-}
+};
 
 //GAME OVER
 const gameOver = () => {
   document.getElementById('game-over-text').classList.add('visible')
   clearInterval(interval);
   console.log('gameOver running')
-}
+};
 
 //VICTORY
 const victory = () => {
@@ -276,9 +275,8 @@ const victory = () => {
   const starRating = document.querySelector('.stars').innerHTML;
   document.getElementById("starRating").innerHTML = starRating;
   
-  console.log('victory running')
-    
-}
+  console.log('victory running');
+};
 
 const ready = () => {
   const overlays = Array.from(document.getElementsByClassName('overlay-text'));
@@ -288,11 +286,8 @@ const ready = () => {
     overlay.classList.remove('visible');
     startGame();
   }
-  console.log('ready running')
+  console.log('ready running');
 });
-}
+};
 
 ready();
-
-//https://medium.com/free-code-camp/vanilla-javascript-tutorial-build-a-memory-game-in-30-minutes-e542c4447eae
-//https://scotch.io/tutorials/how-to-build-a-memory-matching-game-in-javascript#toc-5-the-timer
